@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui" />
+        <title>Tap Dots</title>
+
+        <script type="text/javascript" src="libs/phaser.min.js"></script>
+		<script type="text/javascript" src="src/Boot.js"></script>
+		<script type="text/javascript" src="src/Preloader.js"></script>
+		<script type="text/javascript" src="src/PlayState.js"></script>
+
+		<link href="style/main.css" rel="stylesheet" />
+
+		<script type="text/javascript">
+			
+		</script>
+		
+		<!--<script>          
+		  function doOnOrientationChange()
+		  {
+			switch(window.orientation) 
+			{  
+			  case -90:                 
+					document.getElementById("turn").style.display="block";
+					document.getElementById("ingame").style.display="none";
+					 break;
+			  case 90:
+					document.getElementById("turn").style.display="block";
+					document.getElementById("ingame").style.display="none";  
+					break;
+			 default:                   
+					document.getElementById("turn").style.display="none";
+					document.getElementById("ingame").style.display="block";
+					break;                            
+			}
+			screen.lockOrientation('landscape');
+		  }
+		  //Listen to orientation change
+		  window.addEventListener('orientationchange', doOnOrientationChange);  
+		</script>-->
+		
+    </head>
+    <body bgcolor="black" > <!-- onload="doOnOrientationChange();" -->
+			
+	
+			<div id="turn"></div>
+			
+		   	<script type="text/javascript">
+				(function() {
+					var gameRatio = window.outerWidth/window.outerHeight;
+					var gameEcra = window.innerWidth/window.innerHeight;
+					/*Math.ceil(680*gameRatio)*/
+
+					/*var game = new Phaser.Game(640/gameEcra*gameRatio, 640/gameEcra*gameRatio, Phaser.AUTO, 'game');*/
+
+					var game = new Phaser.Game(768, 768, Phaser.CANVAS, 'game'); 
+
+
+					game.state.add('Boot', TapDots.Boot);
+					game.state.add('Preloader', TapDots.Preloader);
+					game.state.add('PlayState', TapDots.PlayState);
+
+					game.state.start('Boot');
+
+				})();
+			</script>
+    </body>
+</html>
